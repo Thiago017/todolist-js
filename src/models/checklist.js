@@ -1,10 +1,19 @@
-const db = require('../config/connection');
+const DataTypes = require("sequelize");
+const db = require("../config/connection");
 
-  const checklistModel = db.define('checklist', {
+const Checklist = db.define(
+  "checklist",
+  {
     id: { type: DataTypes.INTEGER, primaryKey: 1, autoIncrement: 1 },
     name: { type: DataTypes.STRING },
-  }, {
-    tableName: 'checklists'
-  });
+    removed: { type: DataTypes.INTEGER},
+  },
+  {
+    timestamps: false,
+  },
+  {
+    tableName: "checklists"
+  },
+);
 
-  module.exports = db.models.checklistModel;
+module.exports = Checklist;

@@ -1,9 +1,9 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
 // Option 3: Passing parameters separately (other dialects)
-const sequelize = new Sequelize('todolist', 'root', '', {
-  host: 'localhost',
-  dialect: 'mariadb'
+const sequelize = new Sequelize("todolist", "root", "", {
+  host: "localhost",
+  dialect: "mariadb"
 });
 
 module.exports = sequelize;
@@ -22,7 +22,6 @@ module.exports = sequelize;
 
 // const start = async function() {
 //   const result = await test();
-  
+
 //   console.log(result);
 // }
-

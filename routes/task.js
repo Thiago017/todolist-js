@@ -1,26 +1,27 @@
+
 const express = require("express");
 const router = express.Router();
 const db = require("../src/config/connection");
-const Checklist = require("../src/models/checklist");
+const Task = require("../src/models/task");
 
 router.get("/", (req, res) => {
-  Checklist.findAll()
-    .then(checklists => {
-      res.send(checklists);
+  Task.findAll()
+    .then(tasks => {
+      res.send(tasks);
     })
     .catch(err => console.log(err));
 });
 
 router.get("/:id", (req, res) => {
-  Checklist.findOne({
+  Task.findOne({
     where: {
       id: `${req.params.id}`,
-      removed: 0, 
+      done: 0, 
     },
   })
-  .then(checklists => {
+  .then(tasks => {
     // res.sendStatus(200);
-    res.send(checklists);
+    res.send(tasks);
   })
   .catch(err => console.log(err));
 });
