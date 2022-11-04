@@ -1,13 +1,28 @@
-var mariadb = require('mariadb');
-var db = require('mysql-promise')();
+const { Sequelize } = require('sequelize');
 
-var dafult = {
-	"host": "localhost",
-	"user": "root",
-	"password": "",
-	"database": "todolist"
-};
+// Option 3: Passing parameters separately (other dialects)
+const sequelize = new Sequelize('todolist', 'root', '', {
+  host: 'localhost',
+  dialect: 'mariadb'
+});
 
-db.configure(dafult, mariadb);
+module.exports = sequelize;
 
-module.exports = db;
+// const test = async function() {
+//   let sql = `SELECT * FROM tasks`
+//   return await sequelize.query(sql, {type: sequelize.QueryTypes.SELECT })
+//   .then((row) => {
+//     if(row && row[0]) {
+//       return row[0]
+//     } else {
+//       return false
+//     }
+//   })
+// }
+
+// const start = async function() {
+//   const result = await test();
+  
+//   console.log(result);
+// }
+

@@ -1,6 +1,7 @@
 require('./src/config/connection');
+require('./src/models/task');
 const express = require('express');
-const checklistsRouter = require('./src/routes/checklist');
+const checklistsRouter = require('./routes/checklist');
 const app = express();
 
 app.use(express.json());
