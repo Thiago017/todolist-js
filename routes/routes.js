@@ -21,12 +21,12 @@ routes.delete('/checklists/:id', ChecklistController.deleteChecklistById); //Rem
 routes.post('/checklists/', ChecklistController.createChecklist); //Remove the checklist.
 
 //Tasks
-routes.get('/tasks/', TaskController.index); //Get all checklists.
-routes.get('/tasks/:id', TaskController.getTaskById); //Get a specific checklist.
-routes.put('/tasks/:id', TaskController.updateTaskById); //Update the checklist.
-routes.put('/tasks/:id/complete', TaskController.completeTaskById); //Remove the checklist.
-routes.delete('/tasks/:id', TaskController.deleteTaskById); //Remove the checklist.
-routes.post('/tasks/', TaskController.createTask); //Remove the checklist.
+routes.get('/tasks/', TaskController.index); //Get all tasks.
+routes.get('/tasks/:id', TaskController.getTaskById); //Get a specific task.
+routes.put('/tasks/:id', TaskController.updateTaskById); //Update the task.
+routes.put('/tasks/:id/complete', TaskController.completeTaskById); //Remove the task.
+routes.delete('/tasks/:id', TaskController.deleteTaskById); //Remove the task.
+routes.post('/tasks/', TaskController.createTask); //Remove the task.
 
 
 module.exports = routes
