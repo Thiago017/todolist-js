@@ -3,27 +3,27 @@ const router = express.Router();
 const db = require("../src/config/connection");
 const Checklist = require("../src/models/checklist");
 
-router.get("/", (req, res) => {
-  Checklist.findAll()
-    .then(checklists => {
-      res.send(checklists);
-    })
-    .catch(err => console.log(err));
-});
-
-router.get("/:id", (req, res) => {
-  Checklist.findOne({
-    where: {
-      id: `${req.params.id}`,
-      removed: 0, 
-    },
-  })
-  .then(checklists => {
-    // res.sendStatus(200);
-    res.send(checklists);
-  })
-  .catch(err => console.log(err));
-});
+// router.get("/", (req, res) => {
+//   Checklist.findAll()
+//     .then(checklists => {
+//       res.send(checklists);
+//     })
+//     .catch(err => console.log(err));
+// });
+//
+// router.get("/:id", (req, res) => {
+//   Checklist.findOne({
+//     where: {
+//       id: `${req.params.id}`,
+//       removed: 0,
+//     },
+//   })
+//   .then(checklists => {
+//     // res.sendStatus(200);
+//     res.send(checklists);
+//   })
+//   .catch(err => console.log(err));
+// });
 
 router.put("/:id", (req, res) => {
   console.log(req.params.id);

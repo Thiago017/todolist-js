@@ -14,6 +14,7 @@ const routes = Router()
 
 routes.get('/checklists/', ChecklistController.index);
 routes.get('/checklists/:id', ChecklistController.getChecklistById);
+routes.put('/checklists/:id', ChecklistController.updateChecklistById);
 
 routes.get('/tasks/', TaskController.index);
 routes.get('/tasks/:id', TaskController.getTaskById);

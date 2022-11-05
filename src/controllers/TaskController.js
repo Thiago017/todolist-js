@@ -1,6 +1,7 @@
 const Task = require('../models/task')
 
 class TaskController {
+  
   async index(req, res) {
     Task.findAll()
     .then(rows => {

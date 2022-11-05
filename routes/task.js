@@ -1,30 +1,28 @@
-
 const express = require("express");
 const router = express.Router();
 const db = require("../src/config/connection");
 const Task = require("../src/models/task");
 
-router.get("/", (req, res) => {
-  Task.findAll()
-    .then(tasks => {
-      res.send(tasks);
-    })
-    .catch(err => console.log(err));
-});
-
-router.get("/:id", (req, res) => {
-  Task.findOne({
-    where: {
-      id: `${req.params.id}`,
-      done: 0, 
-    },
-  })
-  .then(tasks => {
-    // res.sendStatus(200);
-    res.send(tasks);
-  })
-  .catch(err => console.log(err));
-});
+// router.get("/", (req, res) => {
+//   Task.findAll()
+//     .then(tasks => {
+//       res.send(tasks);
+//     })
+//     .catch(err => console.log(err));
+// });
+//
+// router.get("/:id", (req, res) => {
+//   Task.findOne({
+//     where: {
+//       id: `${req.params.id}`,
+//       done: 0,
+//     },
+//   })
+//   .then(tasks => {
+//     res.send(tasks);
+//   })
+//   .catch(err => console.log(err));
+// });
 
 router.put("/:id", (req, res) => {
   console.log(req.params.id);
