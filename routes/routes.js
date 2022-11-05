@@ -12,13 +12,21 @@ const routes = Router()
 //     })
 // })
 
-routes.get('/checklists/', ChecklistController.index);
-routes.get('/checklists/:id', ChecklistController.getChecklistById);
-routes.put('/checklists/:id', ChecklistController.updateChecklistById);
+//Checklist
+routes.get('/checklists/', ChecklistController.index); //Get all checklists.
+routes.get('/checklists/:id', ChecklistController.getChecklistById); //Get a specific checklist.
+routes.put('/checklists/:id', ChecklistController.updateChecklistById); //Update the checklist.
+routes.put('/checklists/:id/remove', ChecklistController.removeChecklistById); //Remove the checklist.
+routes.delete('/checklists/:id', ChecklistController.deleteChecklistById); //Remove the checklist.
+routes.post('/checklists/', ChecklistController.createChecklist); //Remove the checklist.
 
-routes.get('/tasks/', TaskController.index);
-routes.get('/tasks/:id', TaskController.getTaskById);
-
+//Tasks
+routes.get('/tasks/', TaskController.index); //Get all checklists.
+routes.get('/tasks/:id', TaskController.getTaskById); //Get a specific checklist.
+routes.put('/tasks/:id', TaskController.updateTaskById); //Update the checklist.
+routes.put('/tasks/:id/complete', TaskController.completeTaskById); //Remove the checklist.
+routes.delete('/tasks/:id', TaskController.deleteTaskById); //Remove the checklist.
+routes.post('/tasks/', TaskController.createTask); //Remove the checklist.
 
 
 module.exports = routes
