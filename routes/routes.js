@@ -3,6 +3,7 @@ const { Router } = require('express');
 // Controllers import
 const ChecklistController = require('../src/controllers/ChecklistController');
 const TaskController = require('../src/controllers/TaskController');
+const PageController = require('../src/controllers/PageController');
 const routes = Router()
 
 // routes.get('/test', function(req, res) {
@@ -27,6 +28,9 @@ routes.put('/tasks/:id', TaskController.updateTaskById); //Update the task.
 routes.put('/tasks/:id/complete', TaskController.completeTaskById); //Remove the task.
 routes.delete('/tasks/:id', TaskController.deleteTaskById); //Remove the task.
 routes.post('/tasks/', TaskController.createTask); //Remove the task.
+
+//Pages
+routes.get('/', PageController.index); //Test.
 
 
 module.exports = routes
