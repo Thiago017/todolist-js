@@ -1,15 +1,19 @@
 const Checklist = require("../models/checklist");
+const Task = require('../models/task');
 const db = require("../config/connection");
 
 class ChecklistController {
 
   async index (req, res) {
-    Checklist.findAll()
+    let sql = "SELECT *, (select count(tasks.checklist_id) FROM tasks WHERE tasks.checklist_id = checklists.id AND tasks.done = 0) AS qtd FROM checklists WHERE checklists.removed = 0";
+    await db.query(sql, { type: db.SELECT })
     .then(rows => {
-      return res.status(200).json(rows);
+      if (rows && rows[0]) {
+        return res.status(200).render('checklists/index', {checklists: rows[0]});
+      }
     })
     .catch(err => {
-      return (`ERROR: ${err}`)
+      return res.status(200).render('pages/error/index', {error: err});
     });
   }
 
@@ -20,15 +24,24 @@ class ChecklistController {
         removed: 0,
       },
     })
-    .then(async function (rows) {
-      if (rows && rows.dataValues) {
-        return res.status(200).json(rows.dataValues);
+    .then(async function (checklist) {
+      if (checklist && checklist.dataValues) {
+
+        let tasks = await Task.findAll({
+          where: {
+            checklist_id: `${req.params.id}`,
+            done: 0,
+          }
+        });
+
+        return res.status(200).render('checklists/show', {checklist: checklist, tasks: tasks});
       } else {
-        return res.send('Checklist not found!');
+        return res.status(200).render('pages/error/index', {error: 'Checklist not found!'});
       }
     })
     .catch(function (err) {
-      return res.send(`ERROR: ${err}`);
+      console.log(err)
+      return res.status(200).render('pages/error/index', {error: err});
     })
   }
 
