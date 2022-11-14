@@ -6,21 +6,27 @@ const TaskController = require('../src/controllers/TaskController');
 const PageController = require('../src/controllers/PageController');
 const routes = Router()
 
-// routes.get('/test', function(req, res) {
-//     return res.json({
-//         status: true,
-//         message: 'Test OK'
-//     })
-// })
-
 //Checklist
-routes.get('/checklists/new', ChecklistController.createChecklistForm); //Get all checklists.
+
+//FORMS
+routes.get('/checklists/new', ChecklistController.createChecklistForm); //Get create form
+routes.get('/checklists/:id/edit', ChecklistController.updateChecklistForm); //Get edit form
+
+//GET
 routes.get('/checklists/', ChecklistController.index); //Get all checklists.
 routes.get('/checklists/:id', ChecklistController.getChecklistById); //Get a specific checklist.
-routes.put('/checklists/:id', ChecklistController.updateChecklistById); //Update the checklist.
+
+//PUT
+routes.put('/checklists/:id/update', ChecklistController.updateChecklistById); //Update the checklist.
 routes.put('/checklists/:id/remove', ChecklistController.removeChecklistById); //Remove the checklist.
+
+//DELETE
 routes.delete('/checklists/:id', ChecklistController.deleteChecklistById); //Remove the checklist.
+
+//POST
 routes.post('/checklists/', ChecklistController.createChecklist); //Remove the checklist.
+
+//<--------------->
 
 //Tasks
 routes.get('/tasks/', TaskController.index); //Get all tasks.

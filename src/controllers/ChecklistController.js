@@ -55,7 +55,7 @@ class ChecklistController {
     .then(async function (rows) {
       if (rows && rows.dataValues) {
         db.query(`UPDATE checklists set name = '${req.body.name}' WHERE id = ${req.params.id}`, { type: db.UPDATE });
-        return res.status(200).json(rows.dataValues);
+        return res.redirect('/checklists');
       } else {
         return res.send('Checklist not found!');
       }
@@ -126,6 +126,17 @@ class ChecklistController {
     let checklist = new Checklist();
 
     return res.status(200).render('checklists/new', { checklist: checklist });
+  }
+
+  async updateChecklistForm(req, res) {
+    let checklist = await Checklist.findOne({
+      where: {
+        id: `${req.params.id}`,
+        removed: 0,
+      },
+    })
+
+    return res.status(200).render('checklists/edit', { checklist: checklist });
   }
 
 }
