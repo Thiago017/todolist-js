@@ -106,11 +106,13 @@ class ChecklistController {
   }
 
   async createChecklist(req, res) {
+    console.log(req.body.name);
+
     if (req.body.name) {
       db.query(`INSERT INTO checklists (name) VALUES ('${req.body.name}')`, { type: db.INSERT })
-        .then(function (status) {
-          if (status) {
-            return res.status(200).json(req.body);
+        .then(function (insert) {
+          if (insert) {
+            res.redirect('/checklists');
           }
         }).catch(function (err) {
           return res.send(`ERROR: ${err}`);
@@ -118,6 +120,12 @@ class ChecklistController {
     } else {
       return res.send(`ERROR: checklist name cannot be null.`);
     }
+  }
+
+  async createChecklistForm(req, res) {
+    let checklist = new Checklist();
+
+    return res.status(200).render('checklists/new', { checklist: checklist });
   }
 
 }

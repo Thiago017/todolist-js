@@ -14,6 +14,7 @@ const routes = Router()
 // })
 
 //Checklist
+routes.get('/checklists/new', ChecklistController.createChecklistForm); //Get all checklists.
 routes.get('/checklists/', ChecklistController.index); //Get all checklists.
 routes.get('/checklists/:id', ChecklistController.getChecklistById); //Get a specific checklist.
 routes.put('/checklists/:id', ChecklistController.updateChecklistById); //Update the checklist.

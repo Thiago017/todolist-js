@@ -9,7 +9,7 @@
         <h1 class="title size-4">Checklists</h1>
       </div>
       <div class="column is-one-fifth">
-        <a href="checklist-form.html" class="button is-success is-small">New list</a>
+        <a href="/checklists/new" class="button is-success is-small">New checklist</a>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
               <%= checklist.name %>
             </p>
             <p class="subtitle is-size-6">
-              <%= checklist.qtd + ((checklist.qtd = 1) ? ' tasks' : ' task') %>
+              <%= checklist.qtd + ((checklist.qtd == 1) ? ' task' : ' tasks') %>
             </p>
           </div>
           <footer class="card-footer">

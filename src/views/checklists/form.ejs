@@ -1,0 +1,11 @@
+<form action="<%= url %>" method="<%= method_ %>">
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input class="input" type="text" name="name" id="name" placeholder="Checklist name" value="<%= checklist.name %>">
+    </div>
+  </div>
+
+  <button type="submit" class="button is-success">Salvar</button>
+  <a href="/checklists" class="button">Cancelar</a>
+</form>
