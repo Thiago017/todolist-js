@@ -11,6 +11,7 @@ const routes = Router()
 //FORMS
 routes.get('/checklists/new', ChecklistController.createChecklistForm); //Get create form
 routes.get('/checklists/:id/edit', ChecklistController.updateChecklistForm); //Get edit form
+routes.get('/checklists/:id/newtask', ChecklistController.createTaskForm); //Get edit form
 
 //GET
 routes.get('/checklists/', ChecklistController.index); //Get all checklists.
@@ -29,12 +30,10 @@ routes.post('/checklists/', ChecklistController.createChecklist); //Remove the c
 //<--------------->
 
 //Tasks
-routes.get('/tasks/', TaskController.index); //Get all tasks.
-routes.get('/tasks/:id', TaskController.getTaskById); //Get a specific task.
-routes.put('/tasks/:id', TaskController.updateTaskById); //Update the task.
-routes.put('/tasks/:id/complete', TaskController.completeTaskById); //Remove the task.
-routes.delete('/tasks/:id', TaskController.deleteTaskById); //Remove the task.
+
 routes.post('/tasks/', TaskController.createTask); //Remove the task.
+routes.put('/tasks/:checklist_id/complete/:id', TaskController.completeTaskById); //Remove the task.
+routes.delete('/tasks/:checklist_id/delete/:id', TaskController.deleteTaskById); //Remove the task.
 
 //Pages
 routes.get('/', PageController.index); //Test.

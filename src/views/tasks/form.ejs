@@ -1,0 +1,20 @@
+<form action="<%= url %>" method="POST">
+
+  <input type="hidden" name="checklist_id" id="checklist_id" value="<%= checklist_id %>">
+
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input class="input" type="text" name="name" id="name" placeholder="Task name" value="<%= task.name %>">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <input class="input" type="text" name="description" id="description" placeholder="Task description" value="<%= task.description %>">
+    </div>
+  </div>
+
+  <button type="submit" class="button is-success">Salvar</button>
+  <a href="/checklists/<%= checklist_id %>" class="button">Cancelar</a>
+</form>

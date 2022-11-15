@@ -3,6 +3,7 @@ const Task = require("../models/task");
 const db = require("../config/connection");
 
 class ChecklistController {
+  
   async index(req, res) {
     let sql =
       "SELECT *, (select count(tasks.checklist_id) FROM tasks WHERE tasks.checklist_id = checklists.id AND tasks.done = 0) AS qtd FROM checklists WHERE checklists.removed = 0";
@@ -136,6 +137,14 @@ class ChecklistController {
       .catch(function (err) {
         return res.send(`ERROR: ${err}`);
       });
+  }
+
+  async createTaskForm(req, res) {
+    let task = new Task();
+
+    let checklist_id = req.params.id;
+
+    return res.status(200).render("tasks/new", { task: task, checklist_id: checklist_id });
   }
 }
 
