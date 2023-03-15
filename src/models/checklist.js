@@ -1,19 +1,23 @@
-const DataTypes = require("sequelize");
-const db = require("../config/connection");
+const { Sequelize, DataTypes, Model } = require("sequelize");
+const sequelize = require("../config/connection");
 
-const Checklist = db.define(
-  "checklist",
+class Checklist extends Model {
+  static async getChecklistByTaskAmount(amout) {
+    return Checklist.findAll();
+  }
+}
+
+Checklist.init(
   {
     id: { type: DataTypes.INTEGER, primaryKey: 1, autoIncrement: 1 },
     name: { type: DataTypes.STRING },
     removed: { type: DataTypes.INTEGER},
   },
-  {
-    timestamps: false,
-  },
-  {
-    tableName: "checklists"
-  },
-);
+ {
+  sequelize,
+  tableName: "checklists",
+  timestamps: false,
+  modelName: "Checklist"
+});
 
 module.exports = Checklist;
